@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', 'App\Http\Controllers\DoadorController@index');
+
+Route::get('/doador/cadastrar', function () {
+    return view('doador/formulario');
 });
+
+Route::post('/doador/create', 'App\Http\Controllers\DoadorController@create');
+Route::get('/doador/delete', 'App\Http\Controllers\DoadorController@delete');
