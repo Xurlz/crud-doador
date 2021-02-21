@@ -1,37 +1,5 @@
 @extends('layout')
 
-<!-- Apagar -->
-@php
-$doadores = Array(
-    Array(
-        "id" => "1",
-        "nome" => "Desivaldo",
-        "cpf" => "123-1312-31313",
-        "email" => "mail@mail.com",
-        "telefone" => "1111111",
-        "endereco" => "foobar",
-        "data_nascimento" => "12/12/3123",
-        "data_cadastro" => "12/12/12",
-        "intervalo_doacao" => "foo",
-        "valor_doacao" => "123,00",
-        "forma_pagamento" => "Credito",
-    ),
-    Array(
-        "id" => "2",
-        "nome" => "Desivaldo",
-        "cpf" => "123-1312-31313",
-        "email" => "mail@mail.com",
-        "telefone" => "1111111",
-        "endereco" => "foobar",
-        "data_nascimento" => "12/12/3123",
-        "data_cadastro" => "12/12/12",
-        "intervalo_doacao" => "foo",
-        "valor_doacao" => "123,00",
-        "forma_pagamento" => "Credito",
-    )
-);
-@endphp
-
 @section('titulo')
 Doadores
 @endsection
