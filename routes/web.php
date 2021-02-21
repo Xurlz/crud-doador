@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'App\Http\Controllers\DoadorController@index');
 
-Route::get('/doador/cadastrar', function () {
-    return view('formulario');
-});
+Route::get('/doador/cadastrar', 'App\Http\Controllers\DoadorController@cadastrarRegistro');
+Route::get('/doador/editar/{id}', 'App\Http\Controllers\DoadorController@editarRegistro');
 
 Route::post('/doador/create', 'App\Http\Controllers\DoadorController@create');
-Route::get('/doador/delete', 'App\Http\Controllers\DoadorController@delete');
+Route::delete('/doador/{id}', 'App\Http\Controllers\DoadorController@delete');
+Route::put('/doador/{id}', 'App\Http\Controllers\DoadorController@update');

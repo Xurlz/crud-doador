@@ -7,6 +7,12 @@ Doadores
 @section('conteudo')
 <a href="/doador/cadastrar" class='btn btn-dark'>Cadastrar doador</a>
 
+@if(!empty(session('mensagem')))
+<div class="alert-success">
+    {{session('mensagem')}}
+</div>
+@endif
+
 <table class="table">
     <tr>
         <!-- <th>Id</th> -->
