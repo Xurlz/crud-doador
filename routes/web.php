@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'App\Http\Controllers\DoadorController@index');
 
 Route::get('/doador/cadastrar', function () {
-    return view('doador/formulario');
+    return view('formulario');
 });
 
 Route::post('/doador/create', 'App\Http\Controllers\DoadorController@create');
