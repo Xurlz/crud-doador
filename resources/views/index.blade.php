@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.base')
 
 @section('titulo')
 Doadores
@@ -27,7 +27,7 @@ Doadores
                 {{$doador['id']}}
             </td> -->
             <td>
-                {{$doador['nome']}}
+                {{$doador->nome}}
             </td>
             <td>
                 {{$doador['cpf']}}
@@ -57,15 +57,16 @@ Doadores
                 {{$doador['forma_pagamento']}}
             </td>
             <td>
-                @csrf
-                <form method="post">
-                    <button class="btn btn-primary" href="doador/update/{{$doador['id']}}" >Editar</button>
+                <form method="get" action="/doador/editar/{{$doador->id}}">
+                    @csrf
+                    <button class="btn btn-primary">Editar</button>
                 </form>
             </td>
             <td>
-                @csrf
-                <form method="post">
-                    <button class="btn btn-danger" href="doador/delete/{{$doador['id']}}" >Excluir</button>
+                <form method='post' action="/doador/{{$doador->id}}">
+                    @method('DELETE')
+                    @csrf
+                    <button class="btn btn-danger">Excluir</button>
                 </form>
             </td>
         </tr>

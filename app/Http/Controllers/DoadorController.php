@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Doador;
 
 class DoadorController extends Controller
 {
     public function index() {
-        return view('index');
+        $doadores = Doador::all();
+
+        return view('index', compact('doadores'));
     }
 
     public function create(Request $request) {
