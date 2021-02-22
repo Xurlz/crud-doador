@@ -14,11 +14,11 @@ class CriarTabelaDoadores extends Migration
     public function up()
     {
         Schema::create('doadores', function(Blueprint $table){
-            $table->id(); // Talvez falte o auto-increment
+            $table->id();
             $table->char('nome',200);
-            $table->char('cpf',11);
+            $table->char('cpf',20);
             $table->char('email',100);
-            $table->char('telefone',11);
+            $table->char('telefone',20);
             $table->char('endereco',100);
             $table->date('data_nascimento');
             $table->dateTime('data_cadastro')->default(now());
