@@ -46,6 +46,7 @@
     <label>CPF</label>
     <input
       class='form-control'
+      id='cpf'
       name="cpf"
       type="text"
       @if(isset($id))
@@ -72,6 +73,7 @@
     <label>Telefone</label>
     <input
       class='form-control'
+      id="telefone"
       name="telefone"
       type="text"
       @if(isset($id))
@@ -163,16 +165,25 @@
 
     <!-- Valor doação   -->
     <label>Valor doação</label>
-    <input
-      class='form-control'
-      name="valor_doacao"
-      type="text"
-      @if(isset($id))
-        value="{{$valor_doacao}}"
-      @elseif(isset($error))
-        value="{{old('valor_doacao')}}"
-      @endif
-    >
+    <div class="row">
+      <div class="col-1">
+        <p class="text-center">R$</p>
+
+      </div>
+      <div class="col">
+        <input
+          class='form-control'
+          id='valor_doacao'
+          name="valor_doacao"
+          type="text"
+          @if(isset($id))
+            value="{{$valor_doacao}}"
+          @elseif(isset($error))
+            value="{{old('valor_doacao')}}"
+          @endif
+        >
+      </div>
+    </div>
 
     <!-- Forma de pagamento -->
     <label>Forma de pagamento</label>
@@ -219,4 +230,12 @@
     </div>
   </div>
 </form>
+
+<script type="text/javascript">
+  $(document).ready(() => {
+    $('#cpf').mask('000.000.000-00');
+    $('#telefone').mask('000 00000-0000', {reverse: true});
+    $('#valor_doacao').mask('0000000000,00', {reverse: true});
+  })
+</script>
 @endsection

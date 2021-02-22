@@ -32,15 +32,14 @@ class DoadorRequest extends FormRequest
             'email' => 'required|email|max:100',
             'telefone' => [
                 'required',
-                'regex:/^(\(?\d{2,3}\)?)?\d{4,5}-?\d{4}$/i'
+                'regex:/^(\(?\d{2,3}\)?)\ ??\d{4,5}-?\d{4}$/i'
             ],
             'endereco' => 'required|max:100',
             'data_nascimento' => 'required|date',
             'intervalo_doacao' => 'required',
             'valor_doacao' => [
                 'required',
-                'regex:/^\d{1,10}\.?\d{0,2}$/i',
-                'notregex:/,/i'
+                'regex:/^\d{1,10}\,?\d{0,2}$/i',
             ],
             'forma_pagamento' => 'required'
         ];
@@ -53,7 +52,6 @@ class DoadorRequest extends FormRequest
             'numeric' => 'Campo :attribute deve ser numérico',
             'regex' => 'Formato inválido no campo :attribute',
             'date' => 'Campo :attribute estar em formato de data',
-            'notregex' => "Use '.' invés de ',' no campo :attribute",
             'email' => "Insira um endereço de email válido",
             'max' => 'Campo :attribute muito longo'
         ];

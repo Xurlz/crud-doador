@@ -31,7 +31,7 @@ class DoadorController extends Controller
             "endereco" => $doador->endereco,
             "data_nascimento" => $doador->data_nascimento,
             "intervalo_doacao" => $doador->intervalo_doacao,
-            "valor_doacao" => $doador->valor_doacao,
+            "valor_doacao" => number_format($doador->valor_doacao,2,'.',''),
             "forma_pagamento" => $doador->forma_pagamento
         ];
 
@@ -40,18 +40,8 @@ class DoadorController extends Controller
 
     public function create(DoadorRequest $request) {
         $request->validated();
-
         $doador = new Doador;
-        $doador->nome = $request->nome;
-        $doador->cpf = $request->cpf;
-        $doador->email = $request->email;
-        $doador->telefone = $request->telefone;
-        $doador->endereco = $request->endereco;
-        $doador->data_nascimento = $request->data_nascimento;
-        $doador->intervalo_doacao = $request->intervalo_doacao;
-        $doador->valor_doacao = $request->valor_doacao;
-        $doador->forma_pagamento = $request->forma_pagamento;
-
+        $this->preencherModelComRequest($doador,$request);
         $doador->save();
 
         return redirect('/')
@@ -75,17 +65,7 @@ class DoadorController extends Controller
     {
         $request->validated();   
         $doador = Doador::find($request->id);
-        //Posso extrair este bloco
-        $doador->nome = $request->nome;
-        $doador->cpf = $request->cpf;
-        $doador->email = $request->email;
-        $doador->telefone = $request->telefone;
-        $doador->endereco = $request->endereco;
-        $doador->data_nascimento = $request->data_nascimento;
-        $doador->intervalo_doacao = $request->intervalo_doacao;
-        $doador->valor_doacao = $request->valor_doacao;
-        $doador->forma_pagamento = $request->forma_pagamento;
-
+        $this->preencherModelComRequest($doador,$request);
         $doador->save();
 
         return redirect('/')
@@ -93,5 +73,17 @@ class DoadorController extends Controller
             'mensagem',
             'Registro alterados com sucesso'
         );
+    }
+
+    private function preencherModelComRequest(Doador $model,DoadorRequest $request) {
+        $model->nome = $request->nome;
+        $model->cpf = $request->cpf;
+        $model->email = $request->email;
+        $model->telefone = $request->telefone;
+        $model->endereco = $request->endereco;
+        $model->data_nascimento = $request->data_nascimento;
+        $model->intervalo_doacao = $request->intervalo_doacao;
+        $model->valor_doacao = str_replace(',','.', $request->valor_doacao);
+        $model->forma_pagamento = $request->forma_pagamento;
     }
 }
