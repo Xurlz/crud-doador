@@ -57,7 +57,7 @@ Doadores
                 {{$doador['intervalo_doacao']}}
             </td>
             <td>
-                {{$doador['valor_doacao']}}
+                R$ {{number_format($doador->valor_doacao,2,',','')}}
             </td>
             <td>
                 {{$doador['forma_pagamento']}}
@@ -69,10 +69,10 @@ Doadores
                 </form>
             </td>
             <td>
-                <form method='post' action="/doador/{{$doador->id}}">
+                <form method='post' action="/doador/{{$doador->id}}" onsubmit="return confirm('Tem certeza de que quer excluir este registro?');">
                     @method('DELETE')
                     @csrf
-                    <button class="btn btn-danger">Excluir</button>
+                    <button class="btn btn-danger" >Excluir</button>
                 </form>
             </td>
         </tr>

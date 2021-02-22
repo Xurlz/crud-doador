@@ -15,7 +15,7 @@
     <title>CRUD - Doador</title>
 </head>
 <body>
-    <div class="container">
+    <div class="container-fluid">
         <h1 class="jumbotron">@yield('titulo')</h1>
         @yield('conteudo')
     </div>
