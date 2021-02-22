@@ -97,10 +97,42 @@
 
     <!-- Intervalo de doaçao   -->
     <label>Intervalo de doação</label>
-    <input type="radio" name='intervalo_doacao' value="unico"> Único </input>
-    <input type="radio" name='intervalo_doacao' value="bimestral"> Bimestral </input>
-    <input type="radio" name='intervalo_doacao' value="semestral"> Semestral </input>
-    <input type="radio" name='intervalo_doacao' value="anual"> Anual </input>
+    <!-- Colocar uma option inicial -->
+    <select id="intervalo_doacao" name="intervalo_doacao" class="form-control">
+      <option
+        value="unico"
+        @if(isset($intervalo_doacao) && $intervalo_doacao==='unico')
+          selected
+        @endif
+      >
+        Único
+      </option>
+      <option
+        value="bimestral"
+        @if(isset($intervalo_doacao) && $intervalo_doacao==='bimestral')
+          selected
+        @endif
+      >
+        Bimestral
+      </option>
+      <option
+        value="semestral"
+        @if(isset($intervalo_doacao) && $intervalo_doacao==='semestral')
+          selected
+        @endif
+      >
+        Semestral
+      </option>
+      <option
+        value="anual"
+
+        @if(isset($intervalo_doacao) && $intervalo_doacao==='anual')
+          selected
+        @endif
+      >
+        Anual
+      </option>
+    </select>
 
     <!-- Valor doação   -->
     <label>Valor doação</label>
@@ -115,8 +147,32 @@
 
     <!-- Forma de pagamento -->
     <label>Forma de pagamento</label>
-    <input type="radio" name='forma_pagamento' value="debito">Débito</input>
-    <input type="radio" name='forma_pagamento' value="credito">Crédito</input>
+    <div class="form-check">
+      <input
+        class='form-check-input'
+        type="radio"
+        id='debito'
+        name='forma_pagamento'
+        value="debito"
+        @if(isset($forma_pagamento) && $forma_pagamento === 'debito')
+          checked
+        @endif
+      >
+      <label class='form-check-label' for="debito">Débito</label>
+    </div>
+    <div class="form-check">
+      <input
+        class='form-check-input'
+        type="radio"
+        id='credito'
+        name='forma_pagamento'
+        value="credito"
+        @if(isset($forma_pagamento) && $forma_pagamento === 'credito')
+          checked
+        @endif
+      >
+      <label class='form-check-label' for='credito'>Crédito</label>
+    </div>
 
     <!-- Botão de envio -->
     <div class="row">
