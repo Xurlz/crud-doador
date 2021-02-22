@@ -37,6 +37,8 @@
       type="text"
       @if(isset($id))
         value="{{$nome}}"
+      @elseif(isset($error))
+        value="{{old('nome')}}"
       @endif
     >
 
@@ -48,6 +50,8 @@
       type="text"
       @if(isset($id))
         value="{{$cpf}}"
+      @elseif(isset($error))
+        value="{{old('cpf')}}"
       @endif
     >
 
@@ -59,6 +63,8 @@
       type="text"
       @if(isset($id))
         value="{{$email}}"
+      @elseif(isset($error))
+        value="{{old('email')}}"
       @endif
     >
 
@@ -70,6 +76,8 @@
       type="text"
       @if(isset($id))
         value="{{$telefone}}"
+      @elseif(isset($error))
+        value="{{old('telefone')}}"
       @endif
     >
 
@@ -81,6 +89,8 @@
       type="text"
       @if(isset($id))
         value="{{$endereco}}"
+      @elseif(isset($error))
+        value="{{old('endereco')}}"
       @endif
     >
 
@@ -92,6 +102,8 @@
       type="date"
       @if(isset($id))
         value="{{$data_nascimento}}"
+      @elseif(isset($error))
+        value="{{old('data_nascimento')}}"
       @endif
     >
 
@@ -100,8 +112,17 @@
     <!-- Colocar uma option inicial -->
     <select id="intervalo_doacao" name="intervalo_doacao" class="form-control">
       <option
+        @if(!isset($intervalo_doacao))
+          selected
+        @endif
+      >
+        Escolha o Intervalo da doação
+      </option>
+      <option
         value="unico"
         @if(isset($intervalo_doacao) && $intervalo_doacao==='unico')
+          selected
+        @elseif(isset($error) && old('intervalo_doacao')==='unico')
           selected
         @endif
       >
@@ -111,6 +132,8 @@
         value="bimestral"
         @if(isset($intervalo_doacao) && $intervalo_doacao==='bimestral')
           selected
+        @elseif(isset($error) && old('intervalo_doacao')==='bimestral')
+          selected
         @endif
       >
         Bimestral
@@ -118,6 +141,8 @@
       <option
         value="semestral"
         @if(isset($intervalo_doacao) && $intervalo_doacao==='semestral')
+          selected
+        @elseif(isset($error) && old('intervalo_doacao')==='semestral')
           selected
         @endif
       >
@@ -127,6 +152,8 @@
         value="anual"
 
         @if(isset($intervalo_doacao) && $intervalo_doacao==='anual')
+          selected
+        @elseif(isset($error) && old('intervalo_doacao')==='anual')
           selected
         @endif
       >
@@ -142,6 +169,8 @@
       type="text"
       @if(isset($id))
         value="{{$valor_doacao}}"
+      @elseif(isset($error))
+        value="{{old('valor_doacao')}}"
       @endif
     >
 
@@ -156,6 +185,8 @@
         value="debito"
         @if(isset($forma_pagamento) && $forma_pagamento === 'debito')
           checked
+        @elseif(isset($error) && old('forma_pagamento')==='debito')
+          checked
         @endif
       >
       <label class='form-check-label' for="debito">Débito</label>
@@ -168,6 +199,8 @@
         name='forma_pagamento'
         value="credito"
         @if(isset($forma_pagamento) && $forma_pagamento === 'credito')
+          checked
+        @elseif(isset($error) && old('forma_pagamento')==='credito')
           checked
         @endif
       >

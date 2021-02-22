@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Doador;
+use App\Http\Requests\DoadorRequest;
 
 class DoadorController extends Controller
 {
@@ -37,18 +38,9 @@ class DoadorController extends Controller
         return view('doador.formulario',$dados);
     }
 
-    public function create(Request $request) {
-        $validacao = $request->validate([
-            'nome' => 'required|max:200',
-            'cpf' => 'required|max:11',
-            'email' => 'required|email|max:100',
-            'telefone' => 'required|max:11',
-            'endereco' => 'required|max:100',
-            'data_nascimento' => 'required|date',
-            'intervalo_doacao' => 'required',
-            'valor_doacao' => ['required','regex:/^\d{1,10}\.?\d{0,2}$/i'],
-            'forma_pagamento' => 'required'
-        ]);
+    public function create(DoadorRequest $request) {
+        $request->validated();
+
         $doador = new Doador;
         $doador->nome = $request->nome;
         $doador->cpf = $request->cpf;
@@ -79,8 +71,9 @@ class DoadorController extends Controller
             );
     }
 
-    public function update(Request $request)
+    public function update(DoadorRequest $request)
     {
+        $request->validated();   
         $doador = Doador::find($request->id);
         //Posso extrair este bloco
         $doador->nome = $request->nome;
