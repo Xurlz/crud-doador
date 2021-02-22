@@ -38,6 +38,17 @@ class DoadorController extends Controller
     }
 
     public function create(Request $request) {
+        $validacao = $request->validate([
+            'nome' => 'required|max:200',
+            'cpf' => 'required|max:11',
+            'email' => 'required|email|max:100',
+            'telefone' => 'required|max:11',
+            'endereco' => 'required|max:100',
+            'data_nascimento' => 'required|date',
+            'intervalo_doacao' => 'required',
+            'valor_doacao' => ['required','regex:/^\d{1,10}\.?\d{0,2}$/i'],
+            'forma_pagamento' => 'required'
+        ]);
         $doador = new Doador;
         $doador->nome = $request->nome;
         $doador->cpf = $request->cpf;
