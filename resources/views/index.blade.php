@@ -36,31 +36,31 @@ Doadores
                 {{$doador->nome}}
             </td>
             <td>
-                {{$doador['cpf']}}
+                {{$doador->cpf}}
             </td>
             <td>
-                {{$doador['email']}}
+                {{$doador->email}}
             </td>
             <td>
-                {{$doador['telefone']}}
+                {{$doador->telefone}}
             </td>
             <td>
-                {{$doador['endereco']}}
+                {{$doador->endereco}}
             </td>
             <td>
-                {{$doador['data_nascimento']}}
+                {{$doador->data_nascimento}}
             </td>
             <td>
-                {{$doador['data_cadastro']}}
+                {{$doador->data_cadastro}}
             </td>
             <td>
-                {{$doador['intervalo_doacao']}}
+                {{$doador->intervalo_doacao}}
             </td>
             <td>
                 R$ {{number_format($doador->valor_doacao,2,',','')}}
             </td>
             <td>
-                {{$doador['forma_pagamento']}}
+                {{$doador->forma_pagamento}}
             </td>
             <td>
                 <form method="get" action="/doador/editar/{{$doador->id}}">
